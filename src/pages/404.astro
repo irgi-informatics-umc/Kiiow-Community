@@ -1,0 +1,77 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Halaman Tidak Ditemukan — 404 · kiiow" description="Halaman yang kamu cari belum dibangun atau tersesat di peta.">
+  <div class="notfound-container">
+    <div class="notfound-card">
+      <div class="pixel-cube-mini" aria-hidden="true">
+        <span>[404]</span>
+      </div>
+      <h1 class="error-code">404</h1>
+      <p class="error-title">Koordinat Kosong</p>
+      <p class="error-desc">
+        Balok yang kamu cari belum ditempatkan di peta ini, atau mungkin sudah dipindahkan.
+      </p>
+      <div class="error-action">
+        <a href="/" class="btn btn-primary">
+          Kembali ke Beranda
+        </a>
+      </div>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .notfound-container {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-12) var(--container-pad);
+  }
+
+  .notfound-card {
+    max-width: 480px;
+    width: 100%;
+    background-color: var(--color-surface-deep);
+    border: 2px solid var(--color-border);
+    padding: var(--space-8);
+    text-align: center;
+    box-shadow: 8px 8px 0 var(--color-surface-elevated);
+  }
+
+  .pixel-cube-mini {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--color-violet);
+    margin-bottom: var(--space-4);
+  }
+
+  .error-code {
+    font-size: clamp(3rem, 8vw, 5rem);
+    letter-spacing: -0.05em;
+    color: var(--color-white);
+    margin-bottom: var(--space-2);
+  }
+
+  .error-title {
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--color-lavender);
+    margin-bottom: var(--space-4);
+  }
+
+  .error-desc {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-bottom: var(--space-8);
+  }
+
+  .error-action {
+    display: flex;
+    justify-content: center;
+  }
+</style>
+

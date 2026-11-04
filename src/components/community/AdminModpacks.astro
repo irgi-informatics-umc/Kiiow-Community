@@ -1,0 +1,406 @@
+---
+import { adminModpacks } from '../../data/modpacks';
+import { siteData } from '../../data/site';
+---
+
+<div id="admin-modpacks" class="admin-modpacks-wrapper">
+  
+  <!-- Dedicated Modpack WhatsApp Channel Card -->
+  <div class="modpack-channel-box">
+    <div class="channel-box-header">
+      <span class="pixel-pill-modpack">
+        <span class="modpack-dot" aria-hidden="true">■</span>
+        <span>MODPACK &amp; MINECRAFT UPDATES</span>
+      </span>
+      <span class="channel-tag">SALURAN RESMI MODPACK</span>
+    </div>
+
+    <div class="channel-box-body">
+      <div class="channel-icon-col" aria-hidden="true">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+        </svg>
+      </div>
+
+      <div class="channel-text-col">
+        <h4 class="channel-col-title">{siteData.adminModpackChannelName}</h4>
+        <p class="channel-col-desc">
+          {siteData.adminModpackChannelDescription}
+        </p>
+      </div>
+    </div>
+
+    <div class="channel-box-action">
+      <a
+        href={siteData.adminModpackChannelUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-secondary channel-link-btn"
+      >
+        <span>{siteData.adminModpackChannelCta}</span>
+        <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Admin Modpack Collection List -->
+  <div class="modpacks-header">
+    <div class="modpacks-meta">
+      <span class="mono-label">ARSIP KONFIGURASI</span>
+      <h3 class="modpacks-heading">Admin's Modpack</h3>
+    </div>
+    <p class="modpacks-sub">
+      Explore the Minecraft modpacks currently used by the KII0W administrators. Discover their configurations, modifications, and gameplay environments.
+    </p>
+  </div>
+
+  <div class="modpacks-list">
+    {adminModpacks.map((modpack, index) => (
+      <article class={`modpack-item ${modpack.featured ? 'modpack-featured' : ''}`}>
+        <div class="modpack-item-top">
+          <div class="modpack-identity">
+            <span class="modpack-num">0{index + 1} //</span>
+            <div class="name-block">
+              <h4 class="modpack-name">{modpack.name}</h4>
+              {modpack.tagline && <span class="modpack-tagline">{modpack.tagline}</span>}
+            </div>
+          </div>
+          
+          <div class="modpack-badges">
+            <span class="spec-pill mc-version">MC {modpack.minecraftVersion}</span>
+            <span class="spec-pill loader-type">{modpack.loader}</span>
+            {modpack.statusBadge && (
+              <span class="spec-pill status-pill">{modpack.statusBadge}</span>
+            )}
+          </div>
+        </div>
+
+        <p class="modpack-desc">{modpack.description}</p>
+
+        <div class="modpack-item-bottom">
+          <div class="meta-specs">
+            <span class="meta-label">Versi:</span>
+            <span class="meta-val">{modpack.version || 'Konfigurasi Internal'}</span>
+          </div>
+
+          <div class="download-slot">
+            {modpack.downloadUrl ? (
+              <a
+                href={modpack.downloadUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-secondary modpack-download-btn"
+              >
+                <span>Unduh Modpack</span>
+                <span aria-hidden="true">↓</span>
+              </a>
+            ) : (
+              <span class="btn-disabled-placeholder" title="Modpack saat ini dipakai internal oleh admin dan belum didistribusikan untuk umum">
+                <span class="dot-internal" aria-hidden="true">■</span>
+                <span>Konfigurasi Internal (Belum Rilis Publik)</span>
+              </span>
+            )}
+          </div>
+        </div>
+      </article>
+    ))}
+  </div>
+</div>
+
+<style>
+  .admin-modpacks-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+  }
+
+  /* Dedicated Admin Modpack WhatsApp Box */
+  .modpack-channel-box {
+    background-color: var(--color-surface-deep);
+    border: 2px solid var(--color-border);
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    box-shadow: 4px 4px 0 var(--color-surface-elevated);
+    transition: border-color var(--transition-fast);
+  }
+
+  .modpack-channel-box:hover {
+    border-color: var(--color-violet);
+  }
+
+  .channel-box-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    padding-bottom: var(--space-3);
+    border-bottom: 1px dashed var(--color-border);
+  }
+
+  .pixel-pill-modpack {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    color: var(--color-lavender);
+    letter-spacing: 0.05em;
+  }
+
+  .modpack-dot {
+    color: var(--color-violet);
+    font-size: 8px;
+  }
+
+  .channel-tag {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-text-dim);
+  }
+
+  .channel-box-body {
+    display: flex;
+    gap: var(--space-4);
+    align-items: flex-start;
+  }
+
+  .channel-icon-col {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    background: var(--color-surface-elevated);
+    border: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-violet);
+  }
+
+  .channel-col-title {
+    font-size: var(--text-md);
+    font-weight: 700;
+    color: var(--color-white);
+    margin-bottom: var(--space-1);
+  }
+
+  .channel-col-desc {
+    font-size: var(--text-xs);
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    margin-bottom: 0;
+  }
+
+  .channel-box-action {
+    display: flex;
+  }
+
+  .channel-link-btn {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 40px;
+    padding: 0.5rem 1rem;
+    font-size: var(--text-xs);
+    border-color: var(--color-border);
+  }
+
+  .channel-link-btn:hover {
+    border-color: var(--color-violet);
+    background-color: var(--color-surface-highlight);
+  }
+
+  /* Modpack List Styles */
+  .modpacks-header {
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: var(--space-4);
+  }
+
+  .modpacks-meta {
+    margin-bottom: var(--space-2);
+  }
+
+  .modpacks-heading {
+    font-size: var(--text-2xl);
+    letter-spacing: -0.02em;
+    color: var(--color-white);
+    margin-top: var(--space-1);
+  }
+
+  .modpacks-sub {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+
+  .modpacks-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .modpack-item {
+    background-color: var(--color-surface-deep);
+    border: 1px solid var(--color-border);
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    transition: border-color var(--transition-fast), transform var(--transition-bounce);
+  }
+
+  .modpack-item:hover {
+    border-color: var(--color-violet);
+    transform: translateX(4px);
+  }
+
+  .modpack-featured {
+    border-left: 3px solid var(--color-violet);
+    background: linear-gradient(90deg, var(--color-surface-elevated) 0%, var(--color-surface-deep) 100%);
+  }
+
+  .modpack-item-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+
+  .modpack-identity {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-3);
+  }
+
+  .modpack-num {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-violet);
+    font-weight: 700;
+  }
+
+  .name-block {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .modpack-name {
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: var(--color-white);
+    margin: 0;
+  }
+
+  .modpack-tagline {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-text-dim);
+  }
+
+  .modpack-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .spec-pill {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    padding: 0.15rem 0.5rem;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg);
+  }
+
+  .spec-pill.mc-version {
+    color: var(--color-lavender);
+  }
+
+  .spec-pill.loader-type {
+    color: var(--color-white);
+  }
+
+  .spec-pill.status-pill {
+    color: var(--color-text-dim);
+    border-style: dashed;
+  }
+
+  .modpack-desc {
+    font-size: var(--text-sm);
+    line-height: 1.65;
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+
+  .modpack-item-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    border-top: 1px dashed var(--color-border);
+    padding-top: var(--space-4);
+  }
+
+  .meta-specs {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    display: flex;
+    gap: 0.4rem;
+  }
+
+  .meta-label {
+    color: var(--color-text-dim);
+  }
+
+  .meta-val {
+    color: var(--color-text-main);
+  }
+
+  .download-slot {
+    display: flex;
+    align-items: center;
+  }
+
+  .modpack-download-btn {
+    min-height: 38px;
+    padding: 0.4rem 1rem;
+    font-size: var(--text-xs);
+  }
+
+  .btn-disabled-placeholder {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-text-dim);
+    background: var(--color-bg);
+    border: 1px dashed var(--color-border);
+    padding: 0.35rem 0.75rem;
+  }
+
+  .dot-internal {
+    color: var(--color-violet);
+    font-size: 8px;
+  }
+
+  @media (max-width: 640px) {
+    .channel-box-body {
+      flex-direction: column;
+    }
+    .modpack-item-top {
+      flex-direction: column;
+    }
+    .modpack-item-bottom {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

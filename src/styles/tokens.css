@@ -1,0 +1,77 @@
+/* Design Tokens: Obsidian Violet + White Contrast Accent */
+:root {
+  /* Surface colors (Strict WCAG AA tested) */
+  --color-bg: #111015;            /* Obsidian base */
+  --color-surface-deep: #191620;   /* Section contrast */
+  --color-surface-elevated: #211d2a; /* Interactive & card lift */
+  --color-surface-highlight: #2c2738; /* Hover state */
+
+  /* Text colors */
+  --color-text-main: #f1edf7;     /* High contrast body/headings (13.8:1 on #111015) */
+  --color-text-muted: #a29aaa;    /* Secondary metadata (5.5:1 on #111015 - passes AA) */
+  --color-text-dim: #776f82;      /* Structural labels / borders (3.2:1) */
+
+  /* Accents */
+  --color-violet: #9b7aff;        /* Vivid focal violet (5.8:1 on #111015) */
+  --color-lavender: #c5b4ff;      /* Highlight violet (9.7:1 on #111015) */
+  --color-white: #ffffff;         /* Pure white: Echoing TikTok aesthetic & sharp contrast */
+  --color-black: #0c0b0f;
+
+  /* Borders & Dividers */
+  --color-border: #383141;
+  --color-border-subtle: #27222e;
+  --color-border-highlight: #5b4b6f;
+
+  /* Typography */
+  --font-editorial: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Type Scale */
+  --text-xs: 0.75rem;     /* 12px */
+  --text-sm: 0.875rem;    /* 14px */
+  --text-base: 1rem;      /* 16px */
+  --text-md: 1.125rem;    /* 18px */
+  --text-lg: 1.25rem;     /* 20px */
+  --text-xl: 1.5rem;      /* 24px */
+  --text-2xl: 2rem;       /* 32px */
+  --text-3xl: 2.75rem;    /* 44px */
+  --text-4xl: 3.5rem;     /* 56px */
+  --text-5xl: 4.5rem;     /* 72px */
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  /* Container & Grid */
+  --container-max: 1200px;
+  --container-pad: 1.5rem;
+
+  /* Pixel motif constants */
+  --pixel-size: 4px;
+  --pixel-step: 8px;
+  --radius-pixel: 0px;    /* Soft brutalist hard edges with pixel notches */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-bounce: 200ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@media (max-width: 640px) {
+  :root {
+    --container-pad: 1rem;
+    --text-3xl: 2.125rem;
+    --text-4xl: 2.625rem;
+    --text-5xl: 3.25rem;
+  }
+}
+

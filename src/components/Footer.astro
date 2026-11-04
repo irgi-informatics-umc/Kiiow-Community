@@ -1,0 +1,226 @@
+---
+import { siteData } from '../data/site';
+---
+
+<footer class="site-footer">
+  <div class="container footer-content">
+    
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="brand-tag">
+          <span class="pixel-box-mark">■</span>
+          <span class="brand-title">{siteData.name}</span>
+        </div>
+        <p class="footer-bio">
+          "{siteData.bioVerbatim}" — Ruang komunitas streamer kecil Minecraft.
+        </p>
+      </div>
+
+      <div class="footer-links-group">
+        <span class="footer-heading">KOMUNITAS &amp; KANAL RESMI</span>
+        <ul class="footer-nav">
+          <li>
+            <a
+              href={siteData.kiiowCommunityChannelUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-link footer-link-highlight"
+            >
+              KII0W Community (WhatsApp) ↗
+            </a>
+          </li>
+          <li>
+            <a
+              href={siteData.adminModpackChannelUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-link"
+            >
+              Admin's Modpack (WhatsApp) ↗
+            </a>
+          </li>
+          <li>
+            <a
+              href={siteData.primarySupportUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-link"
+            >
+              SociaBuzz (Dukungan) ↗
+            </a>
+          </li>
+          <li>
+            <a
+              href={siteData.tiktokUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-link"
+            >
+              TikTok ({siteData.tiktokHandle}) ↗
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-links-group">
+        <span class="footer-heading">NAVIGASI SITUS</span>
+        <ul class="footer-nav">
+          {siteData.navItems.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class="footer-link"
+                target={item.isExternal ? '_blank' : undefined}
+                rel={item.isExternal ? 'noopener noreferrer' : undefined}
+              >
+                {item.label}{item.isExternal ? ' ↗' : ''}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-notes">
+        <p class="copyright">
+          &copy; {new Date().getFullYear()} {siteData.displayName}. Handcrafted with Astro &amp; Obsidian Pixel styling.
+        </p>
+      </div>
+      <div class="footer-status">
+        <span class="status-indicator"></span>
+        <span class="status-msg">Static Build · Two Distinct Channels</span>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background-color: var(--color-surface-deep);
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--space-16);
+    padding-bottom: var(--space-12);
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1.25fr 1fr;
+    gap: var(--space-12);
+    padding-bottom: var(--space-12);
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .brand-tag {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .pixel-box-mark {
+    color: var(--color-violet);
+    font-size: 14px;
+  }
+
+  .brand-title {
+    font-family: var(--font-editorial);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--color-white);
+  }
+
+  .footer-bio {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    max-width: 36ch;
+  }
+
+  .footer-links-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .footer-heading {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-text-dim);
+    letter-spacing: 0.08em;
+  }
+
+  .footer-nav {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .footer-link {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    transition: color var(--transition-fast);
+  }
+
+  .footer-link:hover {
+    color: var(--color-white);
+  }
+
+  .footer-link-highlight {
+    color: var(--color-lavender);
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: var(--space-8);
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+
+  .copyright {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-text-dim);
+    margin-bottom: 0;
+  }
+
+  .footer-status {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .status-indicator {
+    width: 6px;
+    height: 6px;
+    background-color: var(--color-violet);
+  }
+
+  .status-msg {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-text-dim);
+  }
+
+  @media (max-width: 860px) {
+    .footer-top {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

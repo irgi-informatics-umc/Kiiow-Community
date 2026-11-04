@@ -1,0 +1,101 @@
+---
+import WhatsAppChannel from './WhatsAppChannel.astro';
+import AdminModpacks from './AdminModpacks.astro';
+---
+
+<section id="community-hub" class="community-hub-section" aria-labelledby="community-hub-heading">
+  <div class="container">
+    
+    <div class="community-hub-header">
+      <div class="section-tag">
+        <span class="pixel-indicator">■</span>
+        <span>02 // COMMUNITY HUB</span>
+      </div>
+      <h2 id="community-hub-heading" class="section-title">
+        Pusat Interaksi &amp; Konfigurasi Komunitas.
+      </h2>
+      <p class="section-subtitle">
+        Terhubung langsung dengan siaran kabar resmi KII0W dan telusuri modpack Minecraft yang aktif digunakan dalam lingkungan gameplay kami.
+      </p>
+    </div>
+
+    <!-- Editorial Asymmetrical Split: Left = WhatsApp Channel, Right = Admin Modpack Collection -->
+    <div class="community-hub-grid">
+      
+      <div class="hub-channel-col">
+        <WhatsAppChannel />
+      </div>
+
+      <div class="hub-modpacks-col">
+        <AdminModpacks />
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .community-hub-section {
+    padding-block: var(--space-20);
+    border-bottom: 1px solid var(--color-border);
+    background-color: var(--color-bg);
+    position: relative;
+  }
+
+  .community-hub-header {
+    margin-bottom: var(--space-12);
+  }
+
+  .section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-lavender);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: var(--space-3);
+  }
+
+  .pixel-indicator {
+    color: var(--color-violet);
+    font-size: 10px;
+  }
+
+  .section-title {
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-2);
+  }
+
+  .section-subtitle {
+    font-size: var(--text-md);
+    color: var(--color-text-muted);
+    max-width: 64ch;
+  }
+
+  .community-hub-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.25fr;
+    gap: var(--space-10);
+    align-items: start;
+  }
+
+  .hub-channel-col {
+    position: sticky;
+    top: 96px;
+  }
+
+  @media (max-width: 960px) {
+    .community-hub-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-10);
+    }
+    .hub-channel-col {
+      position: static;
+    }
+  }
+</style>
+

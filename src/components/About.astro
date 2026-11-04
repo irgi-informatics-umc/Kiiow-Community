@@ -1,0 +1,257 @@
+---
+import { siteData } from '../data/site';
+---
+
+<section id="tentang" class="about-section" aria-labelledby="about-heading">
+  <div class="container">
+    
+    <div class="about-header">
+      <div class="section-tag">
+        <span class="pixel-indicator">■</span>
+        <span>01 // PROFIL & REALITA</span>
+      </div>
+      <h2 id="about-heading" class="section-title">
+        Bukan Studio Raksasa. <br />
+        <span class="title-sub">Hanya Ruang Santai yang Jujur.</span>
+      </h2>
+    </div>
+
+    <div class="about-grid">
+      
+      <!-- Big Statement Box: The Bio & Voice -->
+      <div class="statement-card">
+        <div class="card-corner tl"></div>
+        <div class="card-corner tr"></div>
+        <div class="card-corner bl"></div>
+        <div class="card-corner br"></div>
+
+        <span class="mono-label">VERBATIM BIO</span>
+        <blockquote class="verbatim-quote">
+          "{siteData.bioVerbatim}"
+        </blockquote>
+        
+        <p class="statement-text">
+          Di balik nama <strong>{siteData.displayName}</strong>, tidak ada agenda korporat atau tim produksi mewah. Kiiow adalah streamer kecil yang menyukai dunia Minecraft—membangun balok, bertualang, dan mengobrol apa adanya bersama siapa pun yang mampir.
+        </p>
+
+        <div class="identity-specs">
+          <div class="spec-row">
+            <span class="spec-key">Identitas</span>
+            <span class="spec-val">{siteData.displayName}</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">Fokus Kreatif</span>
+            <span class="spec-val">Minecraft Gameplay & Chill Hangout</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">Pendekatan Visual</span>
+            <span class="spec-val">Clean Pure-White Aesthetic</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Asymmetric Secondary Column: Real Principles -->
+      <div class="values-column">
+        
+        <article class="principle-item">
+          <div class="principle-header">
+            <span class="principle-num">01</span>
+            <h3 class="principle-title">Kecil Itu Nyaman</h3>
+          </div>
+          <p class="principle-desc">
+            Komunitas yang belum terlalu padat punya kehangatan sendiri. Setiap pesan terbaca, setiap obrolan bermakna, dan kamu bukan sekadar angka di viewer counter.
+          </p>
+        </article>
+
+        <article class="principle-item">
+          <div class="principle-header">
+            <span class="principle-num">02</span>
+            <h3 class="principle-title">Bermain Tanpa Tekanan</h3>
+          </div>
+          <p class="principle-desc">
+            Tidak ada gameplay yang harus sempurna. Kita nikmati proses menambang, membangun rumah kubus, atau sekadar menjelajahi lanskap voxel bersama-sama.
+          </p>
+        </article>
+
+        <article class="principle-item">
+          <div class="principle-header">
+            <span class="principle-num">03</span>
+            <h3 class="principle-title">Dukungan Nyata</h3>
+          </div>
+          <p class="principle-desc">
+            Dukungan teman-teman lewat SociaBuzz langsung membantu kelangsungan stream dan alat berkarya kiiow untuk terus bisa menyapa kalian.
+          </p>
+        </article>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .about-section {
+    padding-block: var(--space-20);
+    border-bottom: 1px solid var(--color-border);
+    background-color: var(--color-surface-deep);
+  }
+
+  .about-header {
+    margin-bottom: var(--space-12);
+  }
+
+  .section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-lavender);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: var(--space-3);
+  }
+
+  .pixel-indicator {
+    color: var(--color-violet);
+    font-size: 10px;
+  }
+
+  .section-title {
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    letter-spacing: -0.02em;
+  }
+
+  .title-sub {
+    color: var(--color-text-muted);
+    font-weight: 400;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: var(--space-8);
+  }
+
+  /* Statement Card with Pixel Corner Notches */
+  .statement-card {
+    position: relative;
+    background-color: var(--color-bg);
+    border: 2px solid var(--color-border);
+    padding: var(--space-8);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .card-corner {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background-color: var(--color-violet);
+  }
+  .card-corner.tl { top: -2px; left: -2px; }
+  .card-corner.tr { top: -2px; right: -2px; }
+  .card-corner.bl { bottom: -2px; left: -2px; }
+  .card-corner.br { bottom: -2px; right: -2px; }
+
+  .verbatim-quote {
+    font-family: var(--font-mono);
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 700;
+    color: var(--color-white);
+    line-height: 1.2;
+    margin-block: var(--space-4) var(--space-6);
+    letter-spacing: -0.02em;
+  }
+
+  .statement-text {
+    font-size: var(--text-base);
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-8);
+  }
+
+  .statement-text strong {
+    color: var(--color-white);
+  }
+
+  .identity-specs {
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .spec-row {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    gap: var(--space-4);
+  }
+
+  .spec-key {
+    color: var(--color-text-dim);
+    text-transform: uppercase;
+  }
+
+  .spec-val {
+    color: var(--color-text-main);
+    font-weight: 600;
+    text-align: right;
+  }
+
+  /* Principles Column */
+  .values-column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .principle-item {
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    padding: var(--space-6);
+    transition: border-color var(--transition-fast), transform var(--transition-bounce);
+  }
+
+  .principle-item:hover {
+    border-color: var(--color-violet);
+    transform: translateX(4px);
+  }
+
+  .principle-header {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-3);
+    margin-bottom: var(--space-2);
+  }
+
+  .principle-num {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--color-violet);
+    font-weight: 700;
+  }
+
+  .principle-title {
+    font-size: var(--text-lg);
+    font-weight: 600;
+  }
+
+  .principle-desc {
+    font-size: var(--text-sm);
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 860px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+

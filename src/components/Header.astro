@@ -1,0 +1,300 @@
+---
+import { siteData } from '../data/site';
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="brand" aria-label="KII0W Beranda">
+      <span class="brand-pixel-dot" aria-hidden="true"></span>
+      <span class="brand-name">{siteData.displayName}</span>
+      <span class="brand-badge">:o</span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="desktop-nav" aria-label="Navigasi Utama">
+      <ul class="nav-links">
+        {siteData.navItems.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class="nav-link"
+              target={item.isExternal ? '_blank' : undefined}
+              rel={item.isExternal ? 'noopener noreferrer' : undefined}
+            >
+              <span class="nav-hash">#</span>{item.label}{item.isExternal ? ' ↗' : ''}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <a
+        href={siteData.primarySupportUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="header-support-btn"
+      >
+        <span class="support-dot"></span>
+        <span>Dukung</span>
+      </a>
+    </nav>
+
+    <!-- Mobile Navigation Toggle -->
+    <button
+      id="mobile-nav-toggle"
+      class="mobile-toggle"
+      aria-expanded="false"
+      aria-controls="mobile-nav-menu"
+      aria-label="Buka Menu Navigasi"
+    >
+      <span class="toggle-bar"></span>
+      <span class="toggle-bar"></span>
+      <span class="toggle-bar"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu Drawer -->
+  <div id="mobile-nav-menu" class="mobile-menu" hidden>
+    <div class="mobile-menu-content">
+      <nav aria-label="Navigasi Menu Mobile">
+        <ul class="mobile-nav-links">
+          {siteData.navItems.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class="mobile-nav-link"
+                target={item.isExternal ? '_blank' : undefined}
+                rel={item.isExternal ? 'noopener noreferrer' : undefined}
+              >
+                <span class="nav-hash">#</span>{item.label}{item.isExternal ? ' ↗' : ''}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <div class="mobile-actions">
+        <a
+          href={siteData.primarySupportUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary"
+          style="width: 100%;"
+        >
+          Dukung di SociaBuzz
+        </a>
+        <a
+          href={siteData.whatsappChannelUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-secondary"
+          style="width: 100%; margin-top: 0.75rem; border-color: var(--color-border);"
+        >
+          WhatsApp Channel ↗
+        </a>
+        <a
+          href={siteData.tiktokUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-secondary"
+          style="width: 100%; margin-top: 0.75rem;"
+        >
+          TikTok {siteData.tiktokHandle}
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: rgba(17, 16, 21, 0.95);
+    border-bottom: 1px solid var(--color-border);
+    backdrop-filter: blur(8px);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-weight: 700;
+    font-size: var(--text-lg);
+    letter-spacing: -0.01em;
+    color: var(--color-white);
+  }
+
+  .brand-pixel-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--color-violet);
+    box-shadow: 2px 2px 0 var(--color-lavender);
+    display: inline-block;
+  }
+
+  .brand-name {
+    font-family: var(--font-editorial);
+  }
+
+  .brand-badge {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-lavender);
+    background: var(--color-surface-elevated);
+    border: 1px solid var(--color-border);
+    padding: 0.1rem 0.4rem;
+    line-height: 1;
+  }
+
+  .desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: var(--space-6);
+  }
+
+  .nav-link {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    transition: color var(--transition-fast);
+    padding: var(--space-2) 0;
+  }
+
+  .nav-hash {
+    color: var(--color-violet);
+    margin-right: 2px;
+  }
+
+  .nav-link:hover {
+    color: var(--color-white);
+  }
+
+  .header-support-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--color-surface-elevated);
+    border: 1px solid var(--color-border);
+    padding: 0.4rem 0.85rem;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--color-white);
+    transition: all var(--transition-fast);
+  }
+
+  .header-support-btn:hover {
+    border-color: var(--color-violet);
+    background: var(--color-surface-highlight);
+    box-shadow: 2px 2px 0 var(--color-violet);
+  }
+
+  .support-dot {
+    width: 6px;
+    height: 6px;
+    background: #4ade80;
+    box-shadow: 0 0 6px rgba(74, 222, 128, 0.5);
+  }
+
+  /* Mobile menu button */
+  .mobile-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface-deep);
+  }
+
+  .toggle-bar {
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-text-main);
+    transition: transform var(--transition-fast), opacity var(--transition-fast);
+  }
+
+  .mobile-menu {
+    border-bottom: 1px solid var(--color-border);
+    background-color: var(--color-surface-deep);
+  }
+
+  .mobile-menu-content {
+    padding: var(--space-6) var(--container-pad);
+  }
+
+  .mobile-nav-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+  }
+
+  .mobile-nav-link {
+    font-family: var(--font-mono);
+    font-size: var(--text-md);
+    color: var(--color-text-main);
+    display: block;
+    padding: var(--space-2) 0;
+  }
+
+  @media (max-width: 768px) {
+    .desktop-nav {
+      display: none;
+    }
+    .mobile-toggle {
+      display: flex;
+    }
+  }
+</style>
+
+<script>
+  // Mobile drawer interaction strictly adhering to a11y: aria-expanded, ESC to close, focus trapped
+  const toggleBtn = document.getElementById('mobile-nav-toggle');
+  const menu = document.getElementById('mobile-nav-menu');
+
+  if (toggleBtn && menu) {
+    toggleBtn.addEventListener('click', () => {
+      const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+      toggleBtn.setAttribute('aria-expanded', String(!isExpanded));
+      if (isExpanded) {
+        menu.hidden = true;
+      } else {
+        menu.hidden = false;
+      }
+    });
+
+    // Close when link clicked
+    const links = menu.querySelectorAll('a');
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        menu.hidden = true;
+        toggleBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Close on Escape
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !menu.hidden) {
+        menu.hidden = true;
+        toggleBtn.setAttribute('aria-expanded', 'false');
+        toggleBtn.focus();
+      }
+    });
+  }
+</script>

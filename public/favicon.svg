@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <rect width="32" height="32" fill="#111015"/>
+  <!-- Isometric pixel cube -->
+  <polygon points="16,4 28,11 16,18 4,11" fill="#C5B4FF"/>
+  <polygon points="16,4 20,6.5 16,9 12,6.5" fill="#FFFFFF"/>
+  <polygon points="4,11 16,18 16,28 4,21" fill="#211D2A"/>
+  <polygon points="16,18 28,11 28,21 16,28" fill="#3D334C"/>
+  <rect x="10" y="16" width="2" height="2" fill="#FFFFFF"/>
+  <rect x="13" y="16" width="2" height="2" fill="#FFFFFF"/>
+</svg>
